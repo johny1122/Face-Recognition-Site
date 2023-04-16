@@ -73,7 +73,7 @@ class App extends Component {
     onImageSubmit = () => {
         this.setState({ imageUrl: this.state.input });
 
-        fetch('http://localhost:3000/imageurl', {
+        fetch('https://face-recognition-server-2na4.onrender.com/imageurl', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({ input: this.state.input })
@@ -81,7 +81,7 @@ class App extends Component {
         .then(response => response.json())
         .then(result => {
             if (Object.keys(result.outputs[0].data).length > 0){ // found a face in the image
-                fetch('http://localhost:3000/image', {
+                fetch('https://face-recognition-server-2na4.onrender.com/image', {
                     method: 'put',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify({
